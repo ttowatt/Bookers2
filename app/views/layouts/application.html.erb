@@ -13,9 +13,18 @@
 
   <body>
     <%= render 'layouts/header' %>   
+
+    <% if notice %>
+      <div class="flash-message"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="flash-message"><%= alert %></div>
+    <% end %>
+
     <main>                          
-     <%= yield %>
+      <%= yield %>
     </main>                         
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

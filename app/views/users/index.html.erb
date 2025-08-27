@@ -1,5 +1,35 @@
-<h1>Usres#index</h1>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', user: @user, book: @book %>
+    </div>
 
-<%= render 'list', user: @user, book: @book %>
-
-<p>Find me in app/views/usres/index.html.erb</p>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <% if user.image.attached? %>
+                  <%= image_tag user.image.variant(resize_to_limit: [80, 80]) %>
+                <% else %>
+                  <%= image_tag "default-image.jpg", size: "80x80", style: "background:#ccc;" %>
+                <% end %>
+              </td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
