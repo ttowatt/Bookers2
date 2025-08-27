@@ -1,17 +1,17 @@
 <div class='container px-5 px-sm-0'>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= render 'list', user: @user, book: Book.new %>
     </div>
 
-    <div class='col-md-8'>
+    <div class='col-md-8 offset-md-1'>
       <h2>Book detail</h2>
       <table class='table table-hover table-inverse'>
         <tbody>
           <tr>
             <td>
               <div>
-                <%= image_tag(@user.image.attached? ? @user.image : "default-image.jpg") %>
+                <%= image_tag(@user.profile_image.attached? ? @user.profile_image : "default-image.jpg") %>
               </div>
               <div>
                 <%= link_to @user.name, user_path(@user) %>

@@ -5,9 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:name]
 
-        has_one_attached :image
+        has_one_attached :profile_image
         has_many :books, dependent: :destroy
 
-        validates :name, length: { minimum: 2, message: "is too short (minimum is 2 characters)" }
+        validates :name,
+            presence: true,
+            length: { minimum: 2, maximum: 20 },
+            uniqueness: true
+
+        validates :introduction,
+            length: { maximum: 50 }
         
 end
